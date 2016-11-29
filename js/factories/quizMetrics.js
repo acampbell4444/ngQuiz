@@ -8,11 +8,16 @@
 			quizActive:false,
 			changeState : changeState
 		};
-	    return quizObj;
 
-	    function changeState(state) {
+		function changeState(state) {
 	    	quizObj.quizActive = state
 	    }
+
+
+
+	    return quizObj;
+
+	    
 	}
 
 })();
