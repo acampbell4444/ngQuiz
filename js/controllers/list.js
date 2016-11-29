@@ -6,7 +6,8 @@
  
     function ListController(){
         var vm = this;
- 
+
+        vm.search=""
         vm.data = turtlesData;
         vm.activeTurtle = {}; // will be used in the view to hold the data of currently active turtle
     
@@ -22,7 +23,7 @@
     var turtlesData = [
         {
             type: "Green Turtle",
-            image_url: "http://www.what-do-turtles-eat.com/wp-content/uploads/2014/10/Sea-Turtles-Habitat.jpg",
+            image_url: "http://www.nmfs.noaa.gov/pr/images/turtles/green_bruckner.jpg",
             locations: "Tropical and subtropical oceans worldwide",
             size: "Up to 1.5m and up to 300kg",
             lifespan: "Over 80 years",
