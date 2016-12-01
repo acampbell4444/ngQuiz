@@ -14,6 +14,8 @@
         vm.questionAnswered=questionAnswered;
         var numQuestionsAnswered=0;
         vm.setActiveQuestion = setActiveQuestion;
+        vm.selectAnswer = selectAnswer;
+
 
        function setActiveQuestion(){
     		var breakOut = false;
@@ -38,6 +40,10 @@
     		vm.setActiveQuestion();
  
 		}
+
+        function selectAnswer(i) {
+            DataService.quizQuestions[vm.activeQuestion].selected=i;
+        }
        
     }
 
