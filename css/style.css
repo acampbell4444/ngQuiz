@@ -32,4 +32,6 @@
     height: auto;
 }
 
-
+.bg-image {
+	border: 4px solid blue;
+}
