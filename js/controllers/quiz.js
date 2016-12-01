@@ -15,6 +15,10 @@
         var numQuestionsAnswered=0;
         vm.setActiveQuestion = setActiveQuestion;
         vm.selectAnswer = selectAnswer;
+        vm.goToQuestion=goToQuestion;
+        vm.error = false;
+        vm.finalize=false;
+        vm.finalizeAnswers=finalizeAnswers;
 
 
        function setActiveQuestion(){
@@ -23,7 +27,9 @@
  			while(!breakOut){
         		 vm.activeQuestion = vm.activeQuestion < quizLength?++vm.activeQuestion:0;
         		 if(DataService.quizQuestions[vm.activeQuestion].selected === null){
-        			breakOut = true;
+                    breakOut = true;
+                }if(vm.activeQuestion === 0){
+        			vm.error = true;
     			}
     		}
 		}
@@ -34,7 +40,15 @@
  			if(DataService.quizQuestions[vm.activeQuestion].selected !== null){
         		numQuestionsAnswered++;
         		if(numQuestionsAnswered >= quizLength){
-           			//Finalise the quiz
+           			for(var i = 0; i < quizLength; i++){
+                        if(DataService.quizQuestions[i].selected === null){
+                            setActiveQuestion(i);
+                            return;
+                        }
+                    }
+                    vm.error=false;
+                    vm.finalize=true;
+                    return;
         		}
     		}
     		vm.setActiveQuestion();
@@ -43,6 +57,20 @@
 
         function selectAnswer(i) {
             DataService.quizQuestions[vm.activeQuestion].selected=i;
+        }
+
+        function goToQuestion(i) {
+            if(DataService.quizQuestions[vm.activeQuestion].selected!==null){
+                  vm.questionAnswered();
+            }
+            vm.activeQuestion=i;
+        }
+
+        function finalizeAnswers(){
+            vm.finalize = false;
+            numQuestionsAnswered=0;
+            vm.activeQuestion=0;
+            quizMetrics.markQuiz();
         }
        
     }

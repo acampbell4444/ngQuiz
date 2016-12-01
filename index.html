@@ -103,7 +103,8 @@
               <button class='btn'
                 ng-repeat='question in quiz.dataService.quizQuestions'
                 ng-class="{'btn-info': question.selected !== null,
-                'btn-danger' : question.selected === null}">
+                'btn-danger' : question.selected === null}"
+                ng-click="quiz.goToQuestion($index)">
                 <span class='glyphicon'
                   ng-class="{'glyphicon-pencil':question.selected!==null,'glyphicon-question-sign':question.selected===null}">
                 </button>
@@ -129,10 +130,24 @@
         </div>
 
       </div>
- 
-      <div class="row">
+        <div class="row">
+          <div class="alert alert-danger"
+             ng-show="quiz.error">
+                Error! You have not answered all of the questions!
+            <button class="close" ng-click="quiz.error = false">&times</button>
+          </div> 
+        </div>
           <h3>Question:</h3>
-          <div class="well well-sm">
+          <div class="well well-sm" ng-show="quiz.finalize">
+            <div class="row">
+              <div class="col-xs-12">
+                <h3>Are you sure you want to submit your answers?</h3>
+                <button class="btn btn-success" ng-click="quiz.finaliseAnswers()">Yes</button>
+                <button class="btn btn-danger" ng-click="quiz.finalise = false">No</button>
+              </div>
+            </div>
+          </div>
+          <div class="well well-sm" ng-hide='quiz.finalize'>
               <div class="row">
                   <div class="col-xs-12">
                       <h4>{{quiz.activeQuestion+1 + ". " + quiz.dataService.quizQuestions[quiz.activeQuestion].text}}</h4>
