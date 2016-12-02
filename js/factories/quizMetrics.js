@@ -10,7 +10,7 @@
 			resultsActive : false,
 			quizActive:false,
 			changeState : changeState,
-			correctAnswers : [],
+			correctAnswers : DataService.correctAnswers,
 			markQuiz : markQuiz,
 			numCorrect : 0
 		};

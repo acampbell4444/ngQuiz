@@ -282,7 +282,7 @@
         {
             type: "Eastern Snake Necked Turtle",
             image_url: "https://c1.staticflickr.com/3/2182/2399413165_bcc8031cac_z.jpg?zz=1",
-            locations: "Eastern Australia",
+            locations: "Exclusively in Eastern Australia",
             size: "Up to 30cm",
             lifespan: "25 years",
             diet: "Carnivore",
